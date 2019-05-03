@@ -1,12 +1,12 @@
 const _ = {
  //_.clamp method
-  clamp(number, lower, upper){
+clamp(number, lower, upper){
     let lowerClampedValue = Math.max(number, lower);
     let clampedValue = Math.min(lowerClampedValue, upper);
     return clampedValue;
   },
   //_.inRange method
-  inRange(number, start, end){
+inRange(number, start, end){
     if (end === undefined){
       end = start;
       start = 0;
@@ -17,7 +17,7 @@ const _ = {
       start = temp;
     }
     
-  return number >= start && number <= end;
+  return number >= start && number < end;
   },
   //_.words method
   words(string){
@@ -25,35 +25,34 @@ const _ = {
     return words;
   },
   //_.pad method
- pad(string, length){
-   if (length <= string.length){
-     return string;
-   }
-   let startPaddingLength = Math.floor((length - string.length)/2);
+pad(string, length){
+  if (length <= string.length){
+    return string;
+}
+  let startPaddingLength = Math.floor((length - string.length)/2);
   let endPaddingLength = Math.floor(length - string.length - startPaddingLength);
-   let paddedString = 
-    ' '.repeat(startPaddingLength) 
-   + string + 
-  ' '.repeat(endPaddingLength);
-   return paddedString;
- },
+  let paddedString = 
+    ' '.repeat(startPaddingLength) + string + 
+    ' '.repeat(endPaddingLength);
+return paddedString;
+},
   //_.has method
- has(object, key){
-   let hasValue = (object[key] !== undefined);
-   return hasValue;
- },
+has(object, key){
+  let hasValue = (object[key] !== undefined);
+  return hasValue;
+},
   
   //_.invert method
-   invert(object) {
-   let invertedObject = {};
-   for (let key in object) {
-       let originalValue = object[key];
-     invertedObject[originalValue] = key;
-   };
-   return invertedObject;
- },
+invert(object) {
+  let invertedObject = {};
+  for (let key in object) {
+  let originalValue = object[key];
+  invertedObject[originalValue] = key;
+};
+return invertedObject;
+},
   //_.findKey method
-  findKey(object, predicate){
+findKey(object, predicate){
     for(let key in object){
       let value = object[key];
       let predicateReturnValue = predicate(value);
@@ -65,22 +64,22 @@ const _ = {
     }
   },
   //_.drop method
-  drop(array, n){
-    if(n === undefined){
-       n = 1;
+drop(array, n){
+  if(n === undefined){
+    n = 1;
     };
     let droppedArray = array.slice(n);
     return droppedArray;
   },
   //_.dropWhile method
-  dropWhile(array, predicate){
+dropWhile(array, predicate){
     let dropNumber = array.findIndex((element, index) =>{
   return !predicate(element, index, array)});
     let droppedArray = this.drop(array, dropNumber);
     return droppedArray;
   },
   //_.chunk method
-  chunk(array, size){
+chunk(array, size){
     if(size === undefined){
       size = 1;
     };
